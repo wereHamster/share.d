@@ -1,0 +1,41 @@
+
+[core]
+    excludesfile = ~/.share.d/git/excludes
+    quotepath = false
+
+[user]
+    name = Tomas Carnecky
+    email = tomas.carnecky@gmail.com
+
+[merge]
+    tool = threesome
+
+[mergetool "threesome"]
+    cmd = "vim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
+    trustExitCode = true
+
+[color]
+    ui = true
+
+[alias]
+    whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
+    whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
+    graphviz = "!f() { echo 'digraph git {' ; git log --pretty='format:  %h -> { %p }' \"$@\" | sed 's/[0-9a-f][0-9a-f]*/\"&\"/g' ; echo '}'; }; f"
+    cat = cat-file -p
+    less = -p cat-file -p
+    alias = config --get-regexp ^alias\\.
+    lg = log --pretty=oneline --abbrev-commit
+    one = "!sh -c 'git show -s --pretty=\"format:%h (%s, %ai\" \"$@\" | sed -e \"s/ [012][0-9]:[0-5][0-9]:[0-5][0-9] [-+][0-9][0-9] [0-9][0-9]$/)/\"' -"
+    llog = log --date=local
+    who = "!sh -c 'git log -1 --pretty=\"format:%an <%ae>\" --author=\"$1\"' -"
+    lb = for-each-ref --format='%(refname)' --sort=-authordate --count=8 refs/heads/
+    rllog = log -g --date=relative
+    rlg = reflog show @{now}
+    sed = !git ls-files --stage | grep ^100 | awk '{print $4}' | xargs sed
+    wtc = !git commit -m \"$(curl -s http://whatthecommit.com/index.txt)\"
+
+[sendemail]
+    smtpserver = smtp.gmail.com
+    smtpserverport = 465
+    smtpencryption = ssl
+    smtpuser = tomas.carnecky@gmail.com

@@ -1,0 +1,38 @@
+#!/bin/bash
+
+RED=$(tput setaf 1)
+GREEN=$(tput setaf 2)
+
+ATTR_RESET=$(tput sgr0)
+
+check_installed() {
+  local prefix=$1
+  local description=$2
+  local version=$3
+
+  if [ -n "$version" ]; then
+    echo "$prefix$description -- ${version}"
+  else
+    echo "$prefix${RED}$description${ATTR_RESET}"
+  fi
+}
+
+check_installed "" "vim                 " $(which vim      2>/dev/null  && vim --version | sed -n 1p | awk '{print $5}')
+check_installed "" "screen              " $(which screen   2>/dev/null  && screen --version | awk '{print $3}')
+check_installed "" "tmux                " $(which tmux     2>/dev/null  && tmux -V | awk '{print $2}')
+check_installed "" "dtach               " $(which dtach    2>/dev/null  && dtach --help | sed -n 's/,//;1p' | awk '{print $4}')
+check_installed "" "dvtm                " $(which dvtm     2>/dev/null  && dvtm -v | awk -F- '{print $2}')
+check_installed "" "ack                 " $(which ack      2>/dev/null  && ack --version | awk '{print $2}')
+check_installed "" "git                 " $(which git      2>/dev/null  && git --version | awk '{print $3}')
+check_installed "" "awk                 " $(which awk      2>/dev/null  && awk --version | sed -n 1p | awk '{print $3}')
+check_installed "" "sed                 " $(which sed      2>/dev/null  && sed --version | sed -n 1p | awk '{print $4}')
+check_installed "" "parallel            " $(which parallel 2>/dev/null  && parallel --version | sed -n 1p | awk '{print $3}')
+check_installed "" "tidy                " $(which tidy     2>/dev/null  && tidy --version | awk '{print $NF}')
+check_installed "" "xmllint             " $(which xmllint  2>/dev/null  && xmllint --version 2>&1 | sed -n 1p | awk '{print $NF}')
+check_installed "" "rvm                 " $(which rvm      2>/dev/null  && rvm --version | grep . | awk '{print $2}')
+check_installed "" "node.js             " $(which node     2>/dev/null  && node --version)
+check_installed "└─ " "npm              " $(which npm      2>/dev/null  && npm --version)
+check_installed "  ├─ " "jslint         " $(which npm      2>/dev/null  && npm ls -g --silent | grep jslint | awk -F@ '{print $2}')
+check_installed "  ├─ " "coffee-script  " $(which npm      2>/dev/null  && npm ls -g --silent | grep coffee-script   | awk -F@ '{print $2}')
+check_installed "  ├─ " "uglify-js      " $(which npm      2>/dev/null  && npm ls -g --silent | grep uglify-js       | awk -F@ '{print $2}')
+

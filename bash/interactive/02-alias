@@ -1,0 +1,12 @@
+
+alias -- +='pushd .'
+alias -- -='popd'
+
+alias -- ..='cd ..'
+alias -- ...='cd ../..'
+
+alias -- l='ls -alF'
+alias -- la='ls -la'
+alias -- ll='ls -l'
+
+alias -- md='mkdir -p'

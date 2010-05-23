@@ -1,0 +1,55 @@
+#!/bin/bash
+
+toggle1 () {
+    notmuch search --output=messages tag:toggle and $1 | while read id; do
+        notmuch show --format=raw $id | bogofilter -$3
+        notmuch tag -toggle -unsure $2 -- $id
+    done
+}
+
+toggle () {
+    toggle1  "$1 and tag:unsure"  "$2"  "$3"
+    toggle1  "$1"                 "$2"  "$4"
+}
+
+correct-misclassified-messages () {
+    toggle  'tag:spam'      '-spam'  'n'  'Sn'
+    toggle  'not tag:spam'  '+spam'  's'  'Ns'
+
+    notmuch search --output=messages tag:unsure and tag:ham | while read id; do
+        notmuch show --format=raw $id | bogofilter -n
+        notmuch tag -unsure -ham $2 -- $id
+    done
+}
+
+
+fetch-new-messages () {
+    rsync -avq --exclude=.notmuch shell.caurea.org:/var/mail/tomc/archive/ $HOME/.mail/
+    notmuch new
+}
+
+
+classify-new-messages () {
+    declare -i mi=0
+
+    declare -a ids=( $(notmuch search --output=messages tag:unclassified) )
+    for i in ${!ids[*]}; do
+        echo "$(notmuch search --output=files ${ids[$i]})"
+    done | bogofilter -buT 2>/dev/null | while read score; do
+        id=${ids[$mi]}
+
+        # score = <filename> <indicator> <score>
+        case $score in
+            *\ H\ *) notmuch tag  -unclassified          -- $id;;
+            *\ S\ *) notmuch tag  -unclassified +spam    -- $id;;
+            *\ U\ *) notmuch tag  -unclassified +unsure  -- $id;;
+            *)  echo "Invalid bogofilter score: $score"; exit 1;;
+        esac
+
+        mi=$(( $mi + 1 ))
+    done
+}
+
+
+# The whole script does just these three steps:
+correct-misclassified-messages && fetch-new-messages && classify-new-messages

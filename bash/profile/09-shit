@@ -1,0 +1,4 @@
+
+if test -d "$LOCAL/shit"; then
+  export PATH="$LOCAL/shit/bin:$PATH"
+fi

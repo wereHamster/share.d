@@ -1,0 +1,11 @@
+
+IdentityFile ~/.private/ssh/id_rsa
+
+Host *.kooaba.com
+Host *.kooaba.ch
+    IdentityFile ~/.private/ssh/kooaba
+
+# enterpriselab
+Host *.el.campus.intern
+	User tacarnec
+	ProxyCommand ~/.share.d/ssh/proxy -S gw-ext.enterpriselab.ch %h %p

@@ -1,0 +1,7 @@
+
+shell bash
+vbell off
+startup_message off
+deflogin off
+
+hardstatus alwayslastline '%{= dd}[ %{R}%H%{d} ][ %{d}%?%-w%?%{G}%n/%f%t%?(%u)%?%{d}%?%+w%?%?%= %{= dd}][ %{R}%d/%m %c%{d} ]'

@@ -1,0 +1,20 @@
+background no
+out_to_console yes
+out_to_x no
+update_interval 20.0
+total_run_times 0
+use_spacer none
+
+TEXT
+${if_up eth0}${if_match "${addr eth0}" != "No Address"}\
+^fg(\#77a8bf)eth: ^fg(white)${addr eth0}  |  \
+${endif}${endif}\
+${if_up wlan0}^fg(\#77a8bf)wlan: ^fg(white)${addr wlan0}  |  ${endif}\
+^fg(\#77a8bf)CPU: ^fg(white)${cpu}%  |  \
+^fg(\#77a8bf)Mem: ^fg(white)${mem}/${cached} - ${memperc}%  |  \
+${if_empty ${battery_time}}\
+^fg(\#77a8bf)AC ^fg(white)${acpiacadapter}  |  \
+${else}\
+^fg(\#77a8bf)Battery: ^fg(white)${battery_time}  |  \
+${endif}\
+${utime %H:%M}
