@@ -101,7 +101,7 @@ set noswapfile
 
 " Keep the undo files in a separat directory.
 set undodir=~/.vim/tmp
-set wildignore+=*/node_modules/*,*/data/*
+set wildignore+=*/node_modules/*
 
 
 " Leader. Specify before you start defining key mappings.
