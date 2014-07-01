@@ -9,6 +9,8 @@ set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Bundle 'airblade/vim-gitgutter'
+Bundle 'chriskempson/base16-vim'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'ervandew/supertab'
 Bundle 'gmarik/vundle'
@@ -26,7 +28,6 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-surround'
 Bundle 'wavded/vim-stylus'
-Bundle 'chriskempson/base16-vim'
 " }}}
 
 " I want complete filetype detection!
