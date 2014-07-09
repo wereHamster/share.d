@@ -1,4 +1,0 @@
-
-if test -d "$LOCAL/vim"; then
-  export PATH="$LOCAL/vim/bin:$PATH"
-fi

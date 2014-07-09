@@ -1,6 +1,0 @@
-
-# Set LOCAL only if not already set. This allows you to
-# override it, for example if your home dir is shared between
-# hosts with incompatible architecture.
-
-test -z "$LOCAL" && export LOCAL="$HOME/.local"

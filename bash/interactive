@@ -1,0 +1,62 @@
+printf "\nLoading $(git --git-dir="$HOME/.share.d/.git" describe --always --long) ...\n\n"
+
+
+# ----------------------------------------------------------------------------
+# Aliases
+
+alias -- +='pushd .'
+alias -- -='popd'
+
+alias -- ..='cd ..'
+alias -- ...='cd ../..'
+
+alias -- l='ls -alF'
+alias -- la='ls -la'
+alias -- ll='ls -l'
+
+alias -- md='mkdir -p'
+
+
+
+# ----------------------------------------------------------------------------
+# History
+
+# shopt -s histappend
+
+# Contrary to popular belief, one should not export these
+HISTSIZE=20000
+HISTCONTROL=ignoreboth,ignorespace
+HISTFILESIZE=
+
+
+
+# ----------------------------------------------------------------------------
+# Sprunge
+#
+# Use like this:
+#  $ sprunge <command>
+#  $ <command> | sprunge
+
+sprunge () {
+    if [ "$*" ]; then
+        local prompt="$(PS1="$PS1" bash -i <<<$'\nexit' 2>&1 | head -n1)"
+        ( echo "$(sed 's/\o033\[[0-9]*;[0-9]*m//g' <<<"$prompt")$@"; exec $@; )
+    else
+        cat
+    fi | curl -F 'sprunge=<-' http://sprunge.us
+}
+
+
+
+# ----------------------------------------------------------------------------
+# Powerline
+
+export PYTHONPATH=$LOCAL/powerline
+. $LOCAL/powerline/powerline/bindings/bash/powerline.sh
+
+
+
+# ----------------------------------------------------------------------------
+# Misc
+
+[ -f ~/.local/z/z.sh ]   && source ~/.local/z/z.sh

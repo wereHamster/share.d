@@ -1,0 +1,46 @@
+
+# Set LOCAL only if not already set. This allows you to
+# override it, for example if your home dir is shared between
+# hosts with incompatible architecture.
+
+test -z "$LOCAL" && export LOCAL="$HOME/.local"
+
+
+# Common binaries and scripts
+if test -d "$LOCAL/bin"; then
+  export PATH="$LOCAL/bin:$PATH"
+fi
+
+
+# Custom vim installation
+if test -d "$LOCAL/vim"; then
+  export PATH="$LOCAL/vim/bin:$PATH"
+fi
+
+
+# RVM
+export rvm_path="$LOCAL/rvm"
+if test -d "$rvm_path"; then
+   . "$rvm_path/scripts/rvm"
+fi
+
+
+# ccache
+if test -d /usr/lib/ccache/bin; then
+    export PATH="/usr/lib/ccache/bin:${PATH}"
+fi
+
+
+# Haskell / Cabal
+if test -d "$HOME/.cabal"; then
+    export PATH="$HOME/.cabal/bin:${PATH}"
+fi
+if test -d "$HOME/.hsenv"; then
+    export PATH="$HOME/.hsenv/bin:${PATH}"
+    eval "$(~/.hsenv/bin/hsenv init -)"
+fi
+
+
+export EDITOR=vim
+
+[ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh

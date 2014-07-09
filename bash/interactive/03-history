@@ -1,7 +1,0 @@
-
-shopt -s histappend
-
-# Contrary to popular belief, one should not export these
-HISTSIZE=20000
-HISTCONTROL=ignoreboth,ignorespace
-HISTFILESIZE=

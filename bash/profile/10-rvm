@@ -1,5 +1,0 @@
-
-export rvm_path="$LOCAL/rvm"
-if test -d "$rvm_path"; then
-   . "$rvm_path/scripts/rvm"
-fi
