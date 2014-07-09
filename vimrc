@@ -171,7 +171,7 @@ let g:Powerline_symbols = 'fancy'
 let NERDTreeIgnore=['\~$', '.*\.orig']
 " }}}
 " ctrlp {{{
-let g:ctrlp_working_path_mode = 2
+let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|.*\.o$\|.*\.out$\|.*\.orig$\|.*\~$\|dist$\|build$\|node_modules$\|public$\|tmp$'
 " }}}
 " Syntastic {{{

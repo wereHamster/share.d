@@ -33,6 +33,8 @@
     rlg = reflog show @{now}
     sed = !git ls-files --stage | grep ^100 | awk '{print $4}' | xargs sed
     wtc = !git commit -m \"$(curl -s http://whatthecommit.com/index.txt)\"
+    fu = commit --amend --reset-author -C HEAD
+    fuu = !git add -u && git fu
 
 [sendemail]
     smtpserver = smtp.gmail.com

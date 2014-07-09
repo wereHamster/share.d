@@ -29,7 +29,7 @@ import System.Exit
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 
-myWorkspaces = ["main","web","mail","chat"]
+myWorkspaces = ["main","web","mail","chat","root"]
 
 keyBindings conf@(XConfig { XMonad.modMask = modMask }) = M.fromList $
 
