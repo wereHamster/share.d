@@ -150,6 +150,9 @@ au Filetype markdown nnoremap <buffer> <localleader>1 yypVr=
 au Filetype markdown nnoremap <buffer> <localleader>2 yypVr-
 au Filetype markdown nnoremap <buffer> <localleader>3 I### <ESC>
 " }}}
+" TypeScript {{{
+au BufNewFile,BufRead *.ts setlocal filetype=javascript
+" }}}
 " }}}
 " Bundles {{{
 " ----------------------------------------------------------------------------
