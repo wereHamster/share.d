@@ -4,12 +4,12 @@ rm -rf ~/.bogofilter
 
 TIMERANGE="$(date +%s -d '30 days ago')..$(date +%s)"
 
-notmuch search --output=messages $TIMERANGE and tag:spam | while read id; do
+notmuch search --output=messages $TIMERANGE and not tag:unsure and tag:spam | while read id; do
     echo $id
     notmuch show --format=raw $id | bogofilter -s
 done
 
-notmuch search --output=messages $TIMERANGE and not tag:spam | while read id; do
+notmuch search --output=messages $TIMERANGE and not tag:unsure and not tag:spam | while read id; do
     echo $id
     notmuch show --format=raw $id | bogofilter -n
 done
