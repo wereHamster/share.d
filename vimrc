@@ -175,7 +175,7 @@ let NERDTreeIgnore=['\~$', '.*\.orig']
 " }}}
 " ctrlp {{{
 let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|.*\.o$\|.*\.out$\|.*\.orig$\|.*\~$\|dist$\|build$\|node_modules$\|public$\|tmp$'
+let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|.*\.o$\|.*\.out$\|.*\.orig$\|.*\~$\|dist$\|build$\|node_modules$\|tmp$'
 " }}}
 " Syntastic {{{
 " Don't run syntastic on HTML files
