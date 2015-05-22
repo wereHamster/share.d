@@ -9,3 +9,5 @@ compinit
 
 # Load every completion after autocomplete loads.
 for config_file ($ZSH/**/completion.zsh) source $config_file
+
+[ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh

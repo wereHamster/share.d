@@ -5,9 +5,10 @@ set modelines=0       " Disable modelines due to security concerns.
 set nocompatible      " And enable all the modern features of vim.
 " }}}
 " Vundle {{{
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
+Plugin 'gmarik/Vundle.vim'
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'airblade/vim-gitgutter'
 Bundle 'chriskempson/base16-vim'
@@ -28,6 +29,8 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-surround'
 Bundle 'wavded/vim-stylus'
+
+call vundle#end()
 " }}}
 
 " I want complete filetype detection!
