@@ -1,6 +1,6 @@
 
 [core]
-    excludesfile = ~/.share.d/git/excludes
+    excludesfile = /opt/boxen/config/git/gitignore
     quotepath = false
 
 [user]
@@ -41,3 +41,6 @@
     smtpserverport = 465
     smtpencryption = ssl
     smtpuser = tomas.carnecky@gmail.com
+
+[credential]
+helper = /opt/boxen/bin/boxen-git-credential
