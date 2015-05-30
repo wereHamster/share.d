@@ -5,7 +5,8 @@ alias 'la=ls -la'
 alias 'll=ls -l'
 alias 'ls-l=ls -l'
 alias 'md=mkdir -p'
-alias 'open=xdg-open'
+alias '..=cd ..'
+alias '...=cd ../..'
 
 # ssh
 alias 'gow=ssh -YCA root@iff.io'
