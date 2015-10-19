@@ -25,10 +25,9 @@ done
 git commit -m v$NEWVERSION
 git tag -a -s -m v$NEWVERSION v$NEWVERSION
 
-cabal sdist
 
 printf "Press enter to upload version $NEWVERSION to hackage"
 read OK
 
-cabal upload dist/*-$NEWVERSION.tar.gz
+stack upload .
 git push origin HEAD v$NEWVERSION
