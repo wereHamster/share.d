@@ -1,1 +1,1 @@
-:set prompt "\ESC[0;38;5;252;48;5;240;1m λ \ESC[0;38;5;240;49;22m \ESC[0m"
+:set prompt "λ: "
